@@ -28,6 +28,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
+
     public void TakeDamage(int damage)
     {
         playerCurrentHealth -= damage;
@@ -45,6 +47,7 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Gained XP: " + xp + ", Total XP: " + currentXP);
     }
 
+    // Level up the player
     void LevelUp()
     {
         playerLevel++;
