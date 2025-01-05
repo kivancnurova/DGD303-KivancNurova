@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootingController : MonoBehaviour
 {
+    public PlayerMovement playerMovement;
+
     public Transform firePoint;
     [Header("Bullet Settings")]
     public float bulletSpeed = 10f;
@@ -15,6 +17,11 @@ public class ShootingController : MonoBehaviour
 
     void Start()
     {
+        if (playerMovement == null)
+        {
+            playerMovement = GetComponent<PlayerMovement>();
+        }
+        
         bulletPool = FindObjectOfType<BulletPool>();
     }
 
@@ -34,7 +41,10 @@ public class ShootingController : MonoBehaviour
         bullet.transform.rotation = firePoint.rotation;
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.velocity = firePoint.up * bulletSpeed;
+
+        Vector2 direction = playerMovement.IsFacingRight() ? firePoint.right : -firePoint.right;
+    
+        rb.velocity  = direction * bulletSpeed;
     }
 }
 

@@ -29,7 +29,7 @@ public class BulletPool : MonoBehaviour
         }
         else
         {
-            GameObject bullet = Instantiate(bulletPrefab);
+            GameObject bullet = Instantiate(bulletPrefab, transform);
             return bullet;
         }
     }

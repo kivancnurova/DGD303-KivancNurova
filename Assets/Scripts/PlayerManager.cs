@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class PlayerManager : MonoBehaviour
     [Header("UI Elements")]
     public Image xpFillImage;
     public Image hpFillImage;
+    public TextMeshProUGUI levelText;
 
     void Start()
     {
         playerCurrentHealth = playerMaxHealth;
+        levelText.text = playerLevel.ToString();
         UpdateHPBar();
         UpdateXPBar();
     }
@@ -75,6 +78,7 @@ public class PlayerManager : MonoBehaviour
     void LevelUp()
     {
         playerLevel++;
+        levelText.text = playerLevel.ToString();
         currentXP = 0;
         xpToLevelUp += 60;
         playerCurrentHealth += 20;
