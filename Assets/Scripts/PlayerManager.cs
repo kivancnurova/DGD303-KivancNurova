@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -14,10 +15,15 @@ public class PlayerManager : MonoBehaviour
     public int currentXP = 0;
     public int xpToLevelUp = 100;
 
+    [Header("UI Elements")]
+    public Image xpFillImage;
+    public Image hpFillImage;
 
     void Start()
     {
         playerCurrentHealth = playerMaxHealth;
+        UpdateHPBar();
+        UpdateXPBar();
     }
 
     void Update()
@@ -28,11 +34,28 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    void UpdateXPBar()
+    {
+        float fillAmount = (float)currentXP / xpToLevelUp;
+        xpFillImage.fillAmount = fillAmount;
+        if(xpFillImage.fillAmount == 1)
+        {
+            xpFillImage.fillAmount = 0;
+        }
+    }
+
+    void UpdateHPBar()
+    {
+        float fillAmount = (float)playerCurrentHealth / playerMaxHealth;
+        hpFillImage.fillAmount = fillAmount;
+    }
+
 
 
     public void TakeDamage(int damage)
     {
         playerCurrentHealth -= damage;
+        UpdateHPBar();
         if(playerCurrentHealth <= 0)
         {
             Die();
@@ -44,6 +67,7 @@ public class PlayerManager : MonoBehaviour
     public void GainXP(int xp)
     {
         currentXP += xp;
+        UpdateXPBar();
         Debug.Log("Gained XP: " + xp + ", Total XP: " + currentXP);
     }
 
