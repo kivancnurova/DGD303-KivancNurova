@@ -32,4 +32,12 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Game Quit");
     }
 
+    void Update()
+    {
+        if(creditsPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            HideCredits();
+        }
+    }
+
 }
