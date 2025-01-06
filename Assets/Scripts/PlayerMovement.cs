@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInput;
     private SpriteRenderer spriteRenderer;
     public Transform firePoint;
+    public Transform weaponHolder;
 
     
     private Animator animator; 
@@ -48,10 +49,13 @@ public class PlayerMovement : MonoBehaviour
         if (movementInput.x > 0)
         {
             spriteRenderer.flipX = false;
+            weaponHolder.rotation = Quaternion.Euler(0, 0, 0);
+
         }
         else if (movementInput.x < 0)
         {
             spriteRenderer.flipX = true;
+            weaponHolder.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
