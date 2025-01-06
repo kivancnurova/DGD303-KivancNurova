@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,10 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Transform firePoint;
 
+    
+    private Animator animator; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -23,8 +28,12 @@ public class PlayerMovement : MonoBehaviour
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.y = Input.GetAxisRaw("Vertical");
         movementInput = movementInput.normalized;
+
         FlipCharacter();
+
         UpdateFirePointPosition();
+
+        UpdateAnimatorParameters();
 
         // RotateTowardsMouse();
     }
@@ -61,6 +70,23 @@ public class PlayerMovement : MonoBehaviour
     public bool IsFacingRight()
     {
         return !spriteRenderer.flipX;
+    }
+
+
+    void UpdateAnimatorParameters()
+    {
+        bool isWalking = movementInput.x != 0 || movementInput.y != 0;
+        animator.SetBool("IsWalking", isWalking);
+
+        if(isWalking)
+        {
+            float animationSpeed = rb.velocity.magnitude / moveSpeed;
+            animator.speed = math.clamp(animationSpeed, 0.5f, 1.5f);
+        }
+        else
+        {
+            animator.speed = 1f;
+        }
     }
 
     // void RotateTowardsMouse() 
