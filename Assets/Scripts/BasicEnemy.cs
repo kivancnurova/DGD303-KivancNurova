@@ -18,6 +18,8 @@ public class BasicEnemy : MonoBehaviour
     [Header("XP Info")]
     public int xpGiveOnDeath = 20;
 
+    private SpriteRenderer spriteRenderer;
+
 
     void Start() 
     {
@@ -29,6 +31,7 @@ public class BasicEnemy : MonoBehaviour
             Debug.LogError("Player not found!");
         }
 
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
@@ -38,6 +41,8 @@ public class BasicEnemy : MonoBehaviour
             Vector3 direction = (player.position - transform.position).normalized;
             transform.position += direction * basicEnemySpeed * Time.deltaTime;
         }
+
+        FlipEnemy();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -80,5 +85,18 @@ public class BasicEnemy : MonoBehaviour
             playerManager.GainXP(xpGiveOnDeath);
         }
         Destroy(gameObject);
+    }
+
+    void FlipEnemy()
+    {
+        Vector3 direction = (player.position - transform.position).normalized;
+        if(direction.x >0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if(direction.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
