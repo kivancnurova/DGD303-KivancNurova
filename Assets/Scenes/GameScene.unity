@@ -241,6 +241,7 @@ MonoBehaviour:
   moveSpeed: 5
   firePoint: {fileID: 786001038}
   weaponHolder: {fileID: 558938622}
+  weaponManager: {fileID: 0}
 --- !u!4 &162372344
 Transform:
   m_ObjectHideFlags: 0
@@ -324,8 +325,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 786001038}
+  m_Children: []
   m_Father: {fileID: 162372344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &238811023
@@ -815,6 +815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 786001038}
   - {fileID: 714509721}
   - {fileID: 1847061998}
   - {fileID: 1195443529}
@@ -835,6 +836,7 @@ MonoBehaviour:
   pistol: {fileID: 714509720}
   shotgun: {fileID: 1847061997}
   rifle: {fileID: 1195443528}
+  currentWeapon: {fileID: 0}
 --- !u!1 &562781203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,11 +1297,11 @@ Transform:
   m_GameObject: {fileID: 786001037}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -6.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.505, y: -0.904, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 238811022}
+  m_Father: {fileID: 558938622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810045407
 GameObject:

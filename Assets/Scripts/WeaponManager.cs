@@ -9,8 +9,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject shotgun;
     public GameObject rifle;
 
-    private GameObject currentWeapon;
-
+    public GameObject currentWeapon;
 
     void Start() 
     {

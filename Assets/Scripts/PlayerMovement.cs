@@ -15,11 +15,16 @@ public class PlayerMovement : MonoBehaviour
     public Transform firePoint;
     public Transform weaponHolder;
 
-    
     private Animator animator; 
+
+    public WeaponManager weaponManager;
 
     void Start()
     {
+        if(weaponManager == null)
+        {
+            weaponManager = FindObjectOfType<WeaponManager>();
+        }
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -36,10 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
         FlipCharacter();
 
-        UpdateFirePointPosition();
-
         UpdateAnimatorParameters();
-
     }
 
     void FixedUpdate()
@@ -47,17 +49,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movementInput * moveSpeed;
     }
     
-    // void RotateWeaponTowardsMouse()
-    // {
-    //     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //     mousePosition.z = 0;
-
-    //     Vector2 direction = (mousePosition - weaponHolder.position).normalized;
-
-    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-    //     weaponHolder.rotation = Quaternion.Euler(0, 0, angle);
-    // }
 
     void FlipCharacter()
     {
@@ -67,26 +58,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (mousePosition.x > playerPosition.x)
         {
-            spriteRenderer.flipX = false;
-            // weaponHolder.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
         }
         else if (mousePosition.x < playerPosition.x)
         {
-            spriteRenderer.flipX = true;
-            // weaponHolder.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }       
-    }
-
-    void UpdateFirePointPosition()
-    {
-        if(spriteRenderer.flipX)
-        {
-            firePoint.localPosition = new Vector3(-5.25f, -6.5f, 0);
-        }
-        else
-        {
-            firePoint.localPosition = new Vector3(5.25f, -6.5f, 0);
-        }
     }
 
     public bool IsFacingRight()
@@ -110,26 +88,6 @@ public class PlayerMovement : MonoBehaviour
             animator.speed = 1f;
         }
     }
-
-    // void RotateTowardsMouse() 
-    // {
-    //     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //     mousePosition.z = 0;
-
-    //     Vector2 direction = (mousePosition - transform.position).normalized;
-
-    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-
-    //     float angleDifference = Mathf.DeltaAngle(transform.eulerAngles.z, angle);
-
-    //     float rotationSpeed = 5f;
-    //     float maxRotationSpeed = 180f; // Maksimum dönüş hızı
-    //     float rotationStep = Mathf.Clamp(angleDifference, -maxRotationSpeed, maxRotationSpeed);
-
-    //     float smoothedAngle = transform.eulerAngles.z + rotationStep * Time.deltaTime * rotationSpeed;
-
-    //     transform.rotation = Quaternion.Euler(0, 0, smoothedAngle); 
-    // }
 
 }
 
