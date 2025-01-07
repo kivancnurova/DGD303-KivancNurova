@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,27 +40,41 @@ public class PlayerMovement : MonoBehaviour
 
         UpdateAnimatorParameters();
 
-        // RotateTowardsMouse();
     }
 
     void FixedUpdate()
     {
         rb.velocity = movementInput * moveSpeed;
     }
+    
+    // void RotateWeaponTowardsMouse()
+    // {
+    //     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     mousePosition.z = 0;
+
+    //     Vector2 direction = (mousePosition - weaponHolder.position).normalized;
+
+    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+    //     weaponHolder.rotation = Quaternion.Euler(0, 0, angle);
+    // }
 
     void FlipCharacter()
     {
-        if (movementInput.x > 0)
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 playerPosition = transform.position;
+
+
+        if (mousePosition.x > playerPosition.x)
         {
             spriteRenderer.flipX = false;
-            weaponHolder.rotation = Quaternion.Euler(0, 0, 0);
-
+            // weaponHolder.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (movementInput.x < 0)
+        else if (mousePosition.x < playerPosition.x)
         {
             spriteRenderer.flipX = true;
-            weaponHolder.rotation = Quaternion.Euler(0, 180, 0);
-        }
+            // weaponHolder.rotation = Quaternion.Euler(0, 180, 0);
+        }       
     }
 
     void UpdateFirePointPosition()

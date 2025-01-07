@@ -38,12 +38,18 @@ public class ShootingController : MonoBehaviour
     {
         GameObject bullet = bulletPool.GetBullet();
         bullet.transform.position = firePoint.position;
-        bullet.transform.rotation = firePoint.rotation;
 
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition.z = 0;
 
-        Vector2 direction = playerMovement.IsFacingRight() ? firePoint.right : -firePoint.right;
-    
+        Vector2 direction = (cursorPosition - firePoint.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+        // Vector2 direction = playerMovement.IsFacingRight() ? firePoint.right : -firePoint.right;
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();    
         rb.velocity  = direction * bulletSpeed;
     }
 }
