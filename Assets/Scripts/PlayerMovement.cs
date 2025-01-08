@@ -12,19 +12,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movementInput;
     private SpriteRenderer spriteRenderer;
-    public Transform firePoint;
     public Transform weaponHolder;
 
     private Animator animator; 
 
-    public WeaponManager weaponManager;
+
+    
 
     void Start()
     {
-        if(weaponManager == null)
-        {
-            weaponManager = FindObjectOfType<WeaponManager>();
-        }
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -42,7 +38,9 @@ public class PlayerMovement : MonoBehaviour
         FlipCharacter();
 
         UpdateAnimatorParameters();
-    }
+
+
+    } 
 
     void FixedUpdate()
     {
@@ -50,20 +48,26 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
+
+
     void FlipCharacter()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 playerPosition = transform.position;
+        Vector3 lookDirection = mousePosition - playerPosition;
+        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
 
         if (mousePosition.x > playerPosition.x)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            weaponHolder.rotation = Quaternion.Euler(0, 0, angle);
 
         }
         else if (mousePosition.x < playerPosition.x)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            weaponHolder.rotation = Quaternion.Euler(180, 0, -angle);
         }       
     }
 

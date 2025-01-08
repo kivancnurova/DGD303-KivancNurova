@@ -9,6 +9,11 @@ public class WeaponManager : MonoBehaviour
     public GameObject shotgun;
     public GameObject rifle;
 
+    public Transform pistolFirePoint;
+    public Transform shotgunFirePoint;
+    public Transform rifleFirePoint;
+    public Transform currentFirePoint;
+
     public GameObject currentWeapon;
 
     void Start() 
@@ -25,6 +30,19 @@ public class WeaponManager : MonoBehaviour
 
         currentWeapon = weapon;
         currentWeapon.SetActive(true);
+
+        if(weapon == pistol)
+        {
+            currentFirePoint = pistolFirePoint;
+        }
+        else if(weapon == shotgun)
+        {
+            currentFirePoint = shotgunFirePoint;
+        }
+        else if(weapon == rifle)
+        {
+            currentFirePoint = rifleFirePoint;
+        }
     }
 
     void SwitchToShotgun()
