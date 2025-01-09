@@ -5,17 +5,22 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     void Update()
     {
+        if (Time.timeScale == 0)
+            isPaused = true;
+        else if (Time.timeScale == 1)
+            isPaused = false;
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused)
+            if(isPaused && pauseMenuUI.activeSelf)
             {
                 Resume();
             }
-            else
+            else if (!isPaused)
             {
                 Pause();
             }

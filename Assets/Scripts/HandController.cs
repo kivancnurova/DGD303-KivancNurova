@@ -14,6 +14,9 @@ public class HandController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 0)
+            return;
+            
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float screenCenterY = Screen.height / 2;
 

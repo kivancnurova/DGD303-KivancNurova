@@ -13,6 +13,17 @@ public class CrosshairController : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0)
+        {
+            Cursor.visible = true;
+            return;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
+
+
         Vector3 cursorPosition = Input.mousePosition;
         crosshair.position = cursorPosition;
     }

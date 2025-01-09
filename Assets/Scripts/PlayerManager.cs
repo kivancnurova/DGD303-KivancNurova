@@ -14,15 +14,18 @@ public class PlayerManager : MonoBehaviour
     [Header("Leveling System")]
     public int playerLevel = 1;
     public int currentXP = 0;
-    public int xpToLevelUp = 100;
+    public int xpToLevelUp = 20;
 
     [Header("UI Elements")]
     public Image xpFillImage;
     public Image hpFillImage;
     public TextMeshProUGUI levelText;
 
+    private UpgradeManager upgradeManager;
+
     void Start()
     {
+        upgradeManager = FindObjectOfType<UpgradeManager>();
         playerCurrentHealth = playerMaxHealth;
         levelText.text = playerLevel.ToString();
         UpdateHPBar();
@@ -78,10 +81,12 @@ public class PlayerManager : MonoBehaviour
     void LevelUp()
     {
         playerLevel++;
+        xpToLevelUp += 21;
         levelText.text = playerLevel.ToString();
-        currentXP = 0;
-        xpToLevelUp += 60;
-        playerCurrentHealth += 20;
+        upgradeManager.ShowUpgradeOptions();
+        // currentXP = 0;
+        // xpToLevelUp += 60;
+        // playerCurrentHealth += 20;
         Debug.Log("Level Up! Current Level: " + playerLevel);
     }
 
