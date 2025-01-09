@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject creditsPanel;
+
+    void Start()
+    {
+        Cursor.visible = true;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("GameScene");

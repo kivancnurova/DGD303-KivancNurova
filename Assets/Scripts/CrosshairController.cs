@@ -18,7 +18,7 @@ public class CrosshairController : MonoBehaviour
             Cursor.visible = true;
             return;
         }
-        else
+        else if(Time.timeScale == 1)
         {
             Cursor.visible = false;
         }
