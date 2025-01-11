@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f367ab93849b8844dbf609b1fb9e41de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  playerStats: {fileID: 0}
   weaponHolder: {fileID: 558938622}
 --- !u!4 &162372344
 Transform:
@@ -458,10 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11c708eaa38f214d98ab954793c5c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 786001038}
-  bulletSpeed: 20
-  fireRate: 1
+  playerStats: {fileID: 0}
   weaponManager: {fileID: 0}
+  firePoint: {fileID: 786001038}
 --- !u!114 &162372346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,10 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51891bf18f4a825479357bc87cbaf6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 100
-  playerLevel: 1
-  currentXP: 0
-  xpToLevelUp: 20
+  playerStats: {fileID: 0}
   xpFillImage: {fileID: 1117396168}
   hpFillImage: {fileID: 478666116}
   levelText: {fileID: 1111110941}
@@ -493,9 +489,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec59750116e27044789ab70de3dbc10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
+  playerMaxHealth: 100
+  playerCurrentHealth: 0
   playerDamage: 100
+  playerLevel: 0
+  playerCurrentXP: 0
+  playerXPToLevelUp: 20
+  playerMovementSpeed: 5
+  playerBulletSpeed: 10
+  playerFireRate: 1
 --- !u!1 &238811021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,11 +2103,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2930031250007042419, guid: 2f224991135c1724cb541ec971c6aabc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.92
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 2930031250007042419, guid: 2f224991135c1724cb541ec971c6aabc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.68
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 2930031250007042419, guid: 2f224991135c1724cb541ec971c6aabc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2584,10 +2586,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}
+  m_sharedMaterial: {fileID: 4260037595826598504, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2611,10 +2613,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 54.55
+  m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

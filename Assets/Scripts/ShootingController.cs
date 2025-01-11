@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ShootingController : MonoBehaviour
 {
+    public PlayerStats playerStats;
+    public WeaponManager weaponManager;
     public Transform firePoint;
-    [Header("Bullet Settings")]
-    public float bulletSpeed = 10f;
-    public float fireRate = 0.5f;
-
     private float nextFireTime = 0f;
 
     private BulletPool bulletPool;
-    public WeaponManager weaponManager;
+
+
+    void Awake() 
+    {
+        if (playerStats == null)
+            playerStats = FindObjectOfType<PlayerStats>();
+    }
+
     void Start()
     {
         if (weaponManager == null)
@@ -27,7 +32,7 @@ public class ShootingController : MonoBehaviour
         if (Time.time >= nextFireTime)
         {
             FireBullet();
-            nextFireTime = Time.time + fireRate;
+            nextFireTime = Time.time + playerStats.playerFireRate;
         }
 
 
@@ -47,7 +52,7 @@ public class ShootingController : MonoBehaviour
         bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();    
-        rb.velocity  = direction * bulletSpeed;
+        rb.velocity  = direction * playerStats.playerBulletSpeed;
     }
 }
 

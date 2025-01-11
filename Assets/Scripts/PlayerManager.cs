@@ -6,35 +6,36 @@ using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
-    [Header("Player Stats")]
-    public int playerMaxHealth = 100;
-    private int playerCurrentHealth;
-
-
-    [Header("Leveling System")]
-    public int playerLevel = 1;
-    public int currentXP = 0;
-    public int xpToLevelUp = 20;
-
+    public PlayerStats playerStats;
+    public UpgradeManager upgradeManager;
+    
     [Header("UI Elements")]
     public Image xpFillImage;
     public Image hpFillImage;
     public TextMeshProUGUI levelText;
 
-    private UpgradeManager upgradeManager;
+
+    void Awake() 
+    {
+        if(playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+    }
+
 
     void Start()
     {
         upgradeManager = FindObjectOfType<UpgradeManager>();
-        playerCurrentHealth = playerMaxHealth;
-        levelText.text = playerLevel.ToString();
+        playerStats.playerCurrentHealth = playerStats.playerMaxHealth;
+        levelText.text = playerStats.playerLevel.ToString();
         UpdateHPBar();
         UpdateXPBar();
     }
 
     void Update()
     {
-        if(currentXP >= xpToLevelUp)
+        if(playerStats.playerCurrentXP >= playerStats.playerXPToLevelUp)
         {
             LevelUp();
         }
@@ -42,7 +43,7 @@ public class PlayerManager : MonoBehaviour
 
     void UpdateXPBar()
     {
-        float fillAmount = (float)currentXP / xpToLevelUp;
+        float fillAmount = (float)playerStats.playerCurrentXP / playerStats.playerXPToLevelUp;
         xpFillImage.fillAmount = fillAmount;
         if(xpFillImage.fillAmount == 1)
         {
@@ -52,7 +53,7 @@ public class PlayerManager : MonoBehaviour
 
     void UpdateHPBar()
     {
-        float fillAmount = (float)playerCurrentHealth / playerMaxHealth;
+        float fillAmount = (float)playerStats.playerCurrentHealth / playerStats.playerMaxHealth;
         hpFillImage.fillAmount = fillAmount;
     }
 
@@ -60,34 +61,31 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        playerCurrentHealth -= damage;
+        playerStats.playerCurrentHealth -= damage;
         UpdateHPBar();
-        if(playerCurrentHealth <= 0)
+        if(playerStats.playerCurrentHealth <= 0)
         {
             Die();
         }
 
-        Debug.Log("Player health: " + playerCurrentHealth);
+        Debug.Log("Player health: " + playerStats.playerCurrentHealth);
     }
 
     public void GainXP(int xp)
     {
-        currentXP += xp;
+        playerStats.playerCurrentXP += xp;
         UpdateXPBar();
-        Debug.Log("Gained XP: " + xp + ", Total XP: " + currentXP);
+        Debug.Log("Gained XP: " + xp + ", Total XP: " + playerStats.playerCurrentXP);
     }
 
     // Level up the player
     void LevelUp()
     {
-        playerLevel++;
-        xpToLevelUp += 21;
-        levelText.text = playerLevel.ToString();
+        playerStats.playerLevel++;
+        playerStats.playerXPToLevelUp += 21;
+        levelText.text = playerStats.playerLevel.ToString();
         upgradeManager.ShowUpgradeOptions();
-        // currentXP = 0;
-        // xpToLevelUp += 60;
-        // playerCurrentHealth += 20;
-        Debug.Log("Level Up! Current Level: " + playerLevel);
+        Debug.Log("Level Up! Current Level: " + playerStats.playerLevel);
     }
 
     void Die()

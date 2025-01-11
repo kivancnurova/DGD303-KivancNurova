@@ -6,8 +6,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 5f;
+    public PlayerStats playerStats;
 
     private Rigidbody2D rb;
     private Vector2 movementInput;
@@ -17,7 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator; 
 
 
-    
+    private void Awake() 
+    {
+        if(playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+    }
 
     void Start()
     {
@@ -44,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = movementInput * moveSpeed;
+        rb.velocity = movementInput * playerStats.playerMovementSpeed;
     }
     
 
@@ -84,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(isWalking)
         {
-            float animationSpeed = rb.velocity.magnitude / moveSpeed;
+            float animationSpeed = rb.velocity.magnitude / playerStats.playerMovementSpeed;
             animator.speed = math.clamp(animationSpeed, 0.5f, 1.5f);
         }
         else
