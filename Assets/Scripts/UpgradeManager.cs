@@ -6,6 +6,19 @@ using TMPro;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public PlayerStats playerStats;
+    public PlayerManager playerManager;
+
+    [Header("Upgrade Amounts")]
+    public int playerAttackDamageUpgradeAmount;
+    public int playerMaxHealthUpgradeAmount;
+    public int playerRegenerationUpgradeAmount;
+    public float playerMovementSpeedUpgradeAmount;
+    public float playerFireRateUpgradeAmount;
+    public float playerBulletSpeedUpgradeAmount;
+    public int playerXPToLevelUpUpgradeAmount;
+ 
+
     [System.Serializable]
     public class UpgradeOption
     {
@@ -15,13 +28,86 @@ public class UpgradeManager : MonoBehaviour
         public System.Action effect;
     }
 
+    [Header("Upgrade Options")]
     public List<UpgradeOption> allUpgrades;
     public Button[] upgradeButtons;
     public GameObject upgradePanel;
 
+    void Awake() 
+    {
+        if(playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+        if(playerManager == null)
+        {
+            playerManager = FindObjectOfType<PlayerManager>();
+        }
+    }
+
     void Start()
     {
         upgradePanel.SetActive(false);
+
+        allUpgrades = new List<UpgradeOption>
+        {
+            new UpgradeOption
+            {
+                name = "Attack Damage",
+                description = "Increases Player Attack Damage:" + playerAttackDamageUpgradeAmount,
+                effect = () => playerStats.playerAttackDamage += playerAttackDamageUpgradeAmount
+            },
+            new UpgradeOption
+            {
+                name = "Max Health",
+                description = "Increases Player Max Health:" + playerMaxHealthUpgradeAmount,
+                effect = () => 
+                {
+                playerStats.playerMaxHealth += playerMaxHealthUpgradeAmount;
+                playerManager.UpdateHPBar();
+                }
+            },
+            new UpgradeOption
+            {
+                name = "Regeneration",
+                description = "Regenerate" + playerRegenerationUpgradeAmount + "Health Instantly",
+                effect = () =>
+                {
+                    if(playerStats.playerCurrentHealth + playerRegenerationUpgradeAmount > playerStats.playerMaxHealth)
+                        playerStats.playerCurrentHealth = playerStats.playerMaxHealth;
+                    else
+                    playerStats.playerCurrentHealth += playerRegenerationUpgradeAmount;
+                }
+            },
+            new UpgradeOption
+            {
+                name = "Movement Speed",
+                description = "Increases Player Movement Speed:" + playerMovementSpeedUpgradeAmount,
+                effect = () => playerStats.playerMovementSpeed += playerMovementSpeedUpgradeAmount
+            },
+            new UpgradeOption
+            {
+                name = "Attack Speed",
+                description = "Increases Player Attack Speed",
+                effect = () => playerStats.playerFireRate -= playerFireRateUpgradeAmount
+            },
+            new UpgradeOption
+            {
+                name = "Bullet Speed",
+                description = "Increases player bullet speed",
+                effect = () => playerStats.playerBulletSpeed += playerBulletSpeedUpgradeAmount
+            },
+            new UpgradeOption
+            {
+                name = "Exp Ratio",
+                description = "Decreases the amount of XP needed to level up",
+                effect = () => 
+                {
+                playerStats.playerXPToLevelUp -= playerXPToLevelUpUpgradeAmount;
+                playerManager.UpdateXPBar();
+                }
+            }
+        };
     }
 
     public void ShowUpgradeOptions()

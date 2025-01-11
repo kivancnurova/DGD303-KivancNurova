@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void UpdateXPBar()
+    public void UpdateXPBar()
     {
         float fillAmount = (float)playerStats.playerCurrentXP / playerStats.playerXPToLevelUp;
         xpFillImage.fillAmount = fillAmount;
@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void UpdateHPBar()
+    public void UpdateHPBar()
     {
         float fillAmount = (float)playerStats.playerCurrentHealth / playerStats.playerMaxHealth;
         hpFillImage.fillAmount = fillAmount;

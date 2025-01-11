@@ -34,7 +34,7 @@ public class BasicBulletController : MonoBehaviour
             BasicEnemy enemy = collision.gameObject.GetComponent<BasicEnemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(playerStats.playerDamage);
+                enemy.TakeDamage(playerStats.playerAttackDamage);
             }
             ReturnToPool();
         }
