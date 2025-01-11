@@ -81,8 +81,9 @@ public class PlayerManager : MonoBehaviour
     // Level up the player
     void LevelUp()
     {
+        playerStats.playerCurrentXP = 0;
         playerStats.playerLevel++;
-        playerStats.playerXPToLevelUp += 21;
+        playerStats.playerXPToLevelUp += 20;
         levelText.text = playerStats.playerLevel.ToString();
         upgradeManager.ShowUpgradeOptions();
         Debug.Log("Level Up! Current Level: " + playerStats.playerLevel);

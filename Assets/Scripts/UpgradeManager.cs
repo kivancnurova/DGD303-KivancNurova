@@ -77,6 +77,7 @@ public class UpgradeManager : MonoBehaviour
                         playerStats.playerCurrentHealth = playerStats.playerMaxHealth;
                     else
                     playerStats.playerCurrentHealth += playerRegenerationUpgradeAmount;
+                    playerManager.UpdateHPBar();
                 }
             },
             new UpgradeOption
