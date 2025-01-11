@@ -377,6 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162372344}
   - component: {fileID: 162372342}
+  - component: {fileID: 162372347}
   - component: {fileID: 162372343}
   - component: {fileID: 162372345}
   - component: {fileID: 162372346}
@@ -480,6 +481,21 @@ MonoBehaviour:
   xpFillImage: {fileID: 1117396168}
   hpFillImage: {fileID: 478666116}
   levelText: {fileID: 1111110941}
+--- !u!114 &162372347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162372341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec59750116e27044789ab70de3dbc10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  playerDamage: 100
 --- !u!1 &238811021
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1097364986}
+  isPaused: 0
 --- !u!4 &460547088
 Transform:
   m_ObjectHideFlags: 0

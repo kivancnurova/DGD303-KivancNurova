@@ -6,11 +6,15 @@ public class BasicBulletController : MonoBehaviour
 {
     public float lifetime;
     private float timeElapsed = 0f;
-    public int basicBulletDamage = 25;
+    public PlayerStats playerStats;
 
     void OnEnable()
     {
         timeElapsed = 0f;
+        if (playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
     }
 
 
@@ -30,7 +34,7 @@ public class BasicBulletController : MonoBehaviour
             BasicEnemy enemy = collision.gameObject.GetComponent<BasicEnemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(basicBulletDamage);
+                enemy.TakeDamage(playerStats.playerDamage);
             }
             ReturnToPool();
         }
