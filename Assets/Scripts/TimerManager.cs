@@ -40,4 +40,9 @@ public class TimerManager : MonoBehaviour
             Debug.Log("Timer has ended!");
         }
     }
+
+    public float GetElapsedTime()
+    {
+        return elapsedTime;
+    }
 }
