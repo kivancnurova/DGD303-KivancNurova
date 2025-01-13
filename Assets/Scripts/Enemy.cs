@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [Header("Basic Enemy Stats")]
     public int basicEnemyHealth = 75;
@@ -34,7 +34,7 @@ public class BasicEnemy : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(player != null)
         {

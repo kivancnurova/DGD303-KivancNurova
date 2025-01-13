@@ -27,11 +27,11 @@ public class BasicBulletController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            BasicEnemy enemy = collision.gameObject.GetComponent<BasicEnemy>();
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(playerStats.playerAttackDamage);

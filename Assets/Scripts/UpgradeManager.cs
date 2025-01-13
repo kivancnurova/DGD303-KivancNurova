@@ -64,6 +64,7 @@ public class UpgradeManager : MonoBehaviour
                 effect = () => 
                 {
                 playerStats.playerMaxHealth += playerMaxHealthUpgradeAmount;
+                playerStats.playerCurrentHealth += 15;
                 playerManager.UpdateHPBar();
                 }
             },

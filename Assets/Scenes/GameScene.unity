@@ -538,11 +538,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   playerCurrentHealth: 0
-  playerAttackDamage: 200
+  playerAttackDamage: 30
   playerLevel: 0
   playerCurrentXP: 0
   playerXPToLevelUp: 20
-  playerMovementSpeed: 5
+  playerMovementSpeed: 2.5
   playerBulletSpeed: 10
   playerFireRate: 1
 --- !u!114 &162372348
@@ -565,75 +565,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0dc5598a19062ea418f949c2486ecfd6, type: 2}
   viewWidth: 25
   viewHeight: 25
---- !u!1001 &195419456
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6504689010485543846, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_Name
-      value: (1)EnemyMaskDudePrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.9534
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.9534
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.9534
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.431169
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.0553613
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770197305250541159, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
 --- !u!1 &201162074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,13 +1173,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
   playerManager: {fileID: 0}
-  playerAttackDamageUpgradeAmount: 100
-  playerMaxHealthUpgradeAmount: 100
+  playerAttackDamageUpgradeAmount: 10
+  playerMaxHealthUpgradeAmount: 25
   playerRegenerationUpgradeAmount: 50
-  playerMovementSpeedUpgradeAmount: 0.5
+  playerMovementSpeedUpgradeAmount: 0.3
   playerFireRateUpgradeAmount: 0.1
   playerBulletSpeedUpgradeAmount: 10
-  playerXPToLevelUpUpgradeAmount: 10
+  playerXPToLevelUpUpgradeAmount: 25
   allUpgrades: []
   upgradeButtons:
   - {fileID: 548442621}
@@ -1277,20 +1208,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460547086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47a4286f798dd014d802de92c5d4d18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - waveName: Basic Enemy Wave
+  - waveName: (0)EnemyBat Wave
     startTime: 0
     endTime: 30
     enemyPrefab: {fileID: 6865824334917617248, guid: 2f224991135c1724cb541ec971c6aabc, type: 3}
-    enemyCount: 20
+    enemyCount: 15
+  - waveName: (1)EnemyMaskDude Wave
+    startTime: 30
+    endTime: 60
+    enemyPrefab: {fileID: 6504689010485543846, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
+    enemyCount: 12
+  - waveName: (2)EnemyNinjaFrog Wave
+    startTime: 60
+    endTime: 90
+    enemyPrefab: {fileID: 7857634568873399134, guid: 47a437218754acf4c9c4eacc96f0d490, type: 3}
+    enemyCount: 10
   player: {fileID: 162372344}
-  spawnDistance: 30
-  maxSpawnDistance: 40
+  spawnDistance: 25
+  maxSpawnDistance: 35
   timerScript: {fileID: 0}
 --- !u!1 &478666114
 GameObject:
@@ -2035,6 +1976,7 @@ GameObject:
   - component: {fileID: 714509721}
   - component: {fileID: 714509722}
   - component: {fileID: 714509723}
+  - component: {fileID: 714509724}
   m_Layer: 7
   m_Name: PistolSprite
   m_TagString: Untagged
@@ -2130,6 +2072,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &714509724
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714509720}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1, y: -5}
+  m_Size: {x: 9.18, y: 4.07}
+  m_Direction: 1
 --- !u!1 &728512510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +3039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195443529}
   - component: {fileID: 1195443530}
+  - component: {fileID: 1195443531}
   m_Layer: 7
   m_Name: RifleSprite
   m_TagString: Untagged
@@ -3136,6 +3114,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1195443531
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195443528}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.2, y: -4.5}
+  m_Size: {x: 13.5, y: 5}
+  m_Direction: 1
 --- !u!1 &1205325864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,6 +4014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1847061998}
   - component: {fileID: 1847061999}
+  - component: {fileID: 1847062000}
   m_Layer: 7
   m_Name: ShotgunSprite
   m_TagString: Untagged
@@ -4075,6 +4089,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1847062000
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847061997}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1, y: -5.5}
+  m_Size: {x: 14, y: 4}
+  m_Direction: 1
 --- !u!1 &1856352875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4207,4 +4256,3 @@ SceneRoots:
   - {fileID: 935121610}
   - {fileID: 562781206}
   - {fileID: 91264358}
-  - {fileID: 195419456}
