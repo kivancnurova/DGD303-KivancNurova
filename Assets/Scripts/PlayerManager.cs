@@ -79,7 +79,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Level up the player
-    void LevelUp()
+    public void LevelUp()
     {
         playerStats.playerCurrentXP = 0;
         playerStats.playerLevel++;
