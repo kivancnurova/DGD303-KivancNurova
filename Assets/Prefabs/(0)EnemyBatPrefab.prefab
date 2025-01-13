@@ -103,7 +103,7 @@ MonoBehaviour:
   enemyHealth: 50
   enemyDamage: 20
   enemySpeed: 2.2
-  xpGiveOnDeath: 10
+  xpGiveOnDeath: 15
 --- !u!50 &4951429774662491512
 Rigidbody2D:
   serializedVersion: 4

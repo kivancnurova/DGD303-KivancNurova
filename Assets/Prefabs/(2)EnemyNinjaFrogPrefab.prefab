@@ -102,8 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 170
   enemyDamage: 40
-  enemySpeed: 2.7
-  xpGiveOnDeath: 50
+  enemySpeed: 2.6
+  xpGiveOnDeath: 60
 --- !u!50 &4969201045006121020
 Rigidbody2D:
   serializedVersion: 4

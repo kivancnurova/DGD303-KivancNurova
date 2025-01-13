@@ -1229,6 +1229,11 @@ MonoBehaviour:
     endTime: 90
     enemyPrefab: {fileID: 7857634568873399134, guid: 47a437218754acf4c9c4eacc96f0d490, type: 3}
     enemyCount: 10
+  - waveName: (3)EnemyPinkMan Wave
+    startTime: 90
+    endTime: 120
+    enemyPrefab: {fileID: 434580870581963127, guid: 44100e46541463347b6ae13ecf9a31e7, type: 3}
+    enemyCount: 8
   player: {fileID: 162372344}
   spawnDistance: 25
   maxSpawnDistance: 35
