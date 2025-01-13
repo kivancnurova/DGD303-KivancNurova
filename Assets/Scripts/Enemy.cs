@@ -5,10 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Basic Enemy Stats")]
-    public int basicEnemyHealth = 75;
-    public int basicEnemyDamage = 20;
-    public float basicEnemySpeed = 2f;
-    private int basicEnemyCurrentHealth;
+    public int enemyHealth;
+    public int enemyDamage;
+    public float enemySpeed;
+    private int enemyCurrentHealth;
 
     private Transform player;
     private Rigidbody2D rb;
@@ -16,14 +16,14 @@ public class Enemy : MonoBehaviour
     private bool isCollidingWithPlayer = false;
 
     [Header("XP Info")]
-    public int xpGiveOnDeath = 20;
+    public int xpGiveOnDeath;
 
     private SpriteRenderer spriteRenderer;
 
 
     void Start() 
     {
-        basicEnemyCurrentHealth = basicEnemyHealth;
+        enemyCurrentHealth = enemyHealth;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (player == null)
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         if(player != null)
         {
             Vector3 direction = (player.position - transform.position).normalized;
-            transform.position += direction * basicEnemySpeed * Time.deltaTime;
+            transform.position += direction * enemySpeed * Time.deltaTime;
         }
 
         FlipEnemy();
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
             PlayerManager playerManager = collision.gameObject.GetComponent<PlayerManager>();
             if(playerManager != null)
             {
-                playerManager.TakeDamage(basicEnemyDamage);
+                playerManager.TakeDamage(enemyDamage);
             }
         }
     }
@@ -68,13 +68,13 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        basicEnemyCurrentHealth -= damage;
-        if(basicEnemyCurrentHealth <= 0)
+        enemyCurrentHealth -= damage;
+        if(enemyCurrentHealth <= 0)
         {
             Die();
         }
 
-        Debug.Log("Enemy health: " + basicEnemyCurrentHealth);
+        Debug.Log("Enemy health: " + enemyCurrentHealth);
     }
 
     void Die()

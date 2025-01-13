@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195f5c180e7a7e14eab39469a5d429a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicEnemyHealth: 115
-  basicEnemyDamage: 35
-  basicEnemySpeed: 2.45
+  enemyHealth: 115
+  enemyDamage: 35
+  enemySpeed: 2.45
   xpGiveOnDeath: 30
 --- !u!50 &-6897621827402182518
 Rigidbody2D:
