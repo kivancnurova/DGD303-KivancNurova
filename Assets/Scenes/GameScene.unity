@@ -1242,6 +1242,12 @@ MonoBehaviour:
   player: {fileID: 162372344}
   spawnDistance: 25
   maxSpawnDistance: 35
+  enemyPrefab:
+  - {fileID: 6865824334917617248, guid: 2f224991135c1724cb541ec971c6aabc, type: 3}
+  - {fileID: 6504689010485543846, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
+  - {fileID: 7857634568873399134, guid: 47a437218754acf4c9c4eacc96f0d490, type: 3}
+  - {fileID: 434580870581963127, guid: 44100e46541463347b6ae13ecf9a31e7, type: 3}
+  - {fileID: 9222455454230132804, guid: a4ec7f55f527dd941a23de2b8d6da676, type: 3}
   timerScript: {fileID: 0}
 --- !u!1 &478666114
 GameObject:

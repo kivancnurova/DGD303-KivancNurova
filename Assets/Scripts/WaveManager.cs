@@ -21,7 +21,7 @@ public class WaveManager : MonoBehaviour
     public float maxSpawnDistance;
 
     private int currentWaveIndex;
-    private List<GameObject> previousWaveEnemies = new List<GameObject>();  
+    public GameObject[] enemyPrefab;
 
     public TimerManager timerScript;
 
@@ -31,6 +31,8 @@ public class WaveManager : MonoBehaviour
         {
             timerScript = FindObjectOfType<TimerManager>();    
         } 
+
+        InitializeWaveIndex();
     }
 
     void Update()
@@ -43,11 +45,6 @@ public class WaveManager : MonoBehaviour
 
             if(elapsedSeconds >= currentWave.startTime && elapsedSeconds <= currentWave.endTime)
             {
-                if(!previousWaveEnemies.Contains(currentWave.enemyPrefab))
-                {
-                    previousWaveEnemies.Add(currentWave.enemyPrefab);
-                }
-
                 StartCoroutine(SpawnWave(currentWave));
                 currentWaveIndex++;
             }
@@ -55,10 +52,31 @@ public class WaveManager : MonoBehaviour
 
         if(elapsedSeconds >= 150f && elapsedSeconds <= 180f && currentWaveIndex == waves.Count)
         {
+            Debug.Log("Spawning mixed wave");
             StartCoroutine(SpawnMixedWave());
             currentWaveIndex++;
         }
 
+    }
+
+    void InitializeWaveIndex()
+    {
+        float elapsedSeconds = timerScript.GetElapsedTime();
+
+        for (int i =0; i < waves.Count; i++)
+        {
+
+            if(elapsedSeconds >= waves[i].startTime && elapsedSeconds <= waves[i].endTime)
+            {
+                currentWaveIndex = i;
+                break;
+            }
+        }
+
+        if(elapsedSeconds >= 150f && elapsedSeconds <= 180f)
+        {
+            currentWaveIndex = waves.Count;
+        }
     }
 
     IEnumerator SpawnWave(Wave wave)
@@ -80,7 +98,7 @@ public class WaveManager : MonoBehaviour
 
         for(int i = 0; i < mixedEnemyCount; i++)
         {
-            GameObject randomEnemy = previousWaveEnemies[Random.Range(0, previousWaveEnemies.Count)];
+            GameObject randomEnemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
 
             Vector3 spawnPosition = GetRandomSpawnPosition();
             Instantiate(randomEnemy, spawnPosition, Quaternion.identity);
