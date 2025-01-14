@@ -21,6 +21,7 @@ public class WaveManager : MonoBehaviour
     public float maxSpawnDistance;
 
     private int currentWaveIndex;
+    private List<GameObject> previousWaveEnemies = new List<GameObject>();
 
     public TimerManager timerScript;
 

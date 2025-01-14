@@ -1234,6 +1234,11 @@ MonoBehaviour:
     endTime: 120
     enemyPrefab: {fileID: 434580870581963127, guid: 44100e46541463347b6ae13ecf9a31e7, type: 3}
     enemyCount: 8
+  - waveName: (4)EnemyVirtualGuy Wave
+    startTime: 120
+    endTime: 150
+    enemyPrefab: {fileID: 9222455454230132804, guid: a4ec7f55f527dd941a23de2b8d6da676, type: 3}
+    enemyCount: 6
   player: {fileID: 162372344}
   spawnDistance: 25
   maxSpawnDistance: 35
