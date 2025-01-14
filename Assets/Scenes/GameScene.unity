@@ -1218,27 +1218,27 @@ MonoBehaviour:
     startTime: 0
     endTime: 30
     enemyPrefab: {fileID: 6865824334917617248, guid: 2f224991135c1724cb541ec971c6aabc, type: 3}
-    enemyCount: 15
+    enemyCount: 16
   - waveName: (1)EnemyMaskDude Wave
     startTime: 30
     endTime: 60
     enemyPrefab: {fileID: 6504689010485543846, guid: 48b2059b200f2ea46be69d5b6bcd9f94, type: 3}
-    enemyCount: 12
+    enemyCount: 14
   - waveName: (2)EnemyNinjaFrog Wave
     startTime: 60
     endTime: 90
     enemyPrefab: {fileID: 7857634568873399134, guid: 47a437218754acf4c9c4eacc96f0d490, type: 3}
-    enemyCount: 10
+    enemyCount: 12
   - waveName: (3)EnemyPinkMan Wave
     startTime: 90
     endTime: 120
     enemyPrefab: {fileID: 434580870581963127, guid: 44100e46541463347b6ae13ecf9a31e7, type: 3}
-    enemyCount: 8
+    enemyCount: 10
   - waveName: (4)EnemyVirtualGuy Wave
     startTime: 120
     endTime: 150
     enemyPrefab: {fileID: 9222455454230132804, guid: a4ec7f55f527dd941a23de2b8d6da676, type: 3}
-    enemyCount: 6
+    enemyCount: 8
   player: {fileID: 162372344}
   spawnDistance: 25
   maxSpawnDistance: 35

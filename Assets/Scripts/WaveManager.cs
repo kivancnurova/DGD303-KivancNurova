@@ -21,7 +21,7 @@ public class WaveManager : MonoBehaviour
     public float maxSpawnDistance;
 
     private int currentWaveIndex;
-    private List<GameObject> previousWaveEnemies = new List<GameObject>();
+    private List<GameObject> previousWaveEnemies = new List<GameObject>();  
 
     public TimerManager timerScript;
 
@@ -43,10 +43,22 @@ public class WaveManager : MonoBehaviour
 
             if(elapsedSeconds >= currentWave.startTime && elapsedSeconds <= currentWave.endTime)
             {
+                if(!previousWaveEnemies.Contains(currentWave.enemyPrefab))
+                {
+                    previousWaveEnemies.Add(currentWave.enemyPrefab);
+                }
+
                 StartCoroutine(SpawnWave(currentWave));
                 currentWaveIndex++;
             }
         }
+
+        if(elapsedSeconds >= 150f && elapsedSeconds <= 180f && currentWaveIndex == waves.Count)
+        {
+            StartCoroutine(SpawnMixedWave());
+            currentWaveIndex++;
+        }
+
     }
 
     IEnumerator SpawnWave(Wave wave)
@@ -60,6 +72,23 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+
+    IEnumerator SpawnMixedWave()
+    {
+        Debug.Log("Spawning mixed wave");
+        int mixedEnemyCount = 30;
+
+        for(int i = 0; i < mixedEnemyCount; i++)
+        {
+            GameObject randomEnemy = previousWaveEnemies[Random.Range(0, previousWaveEnemies.Count)];
+
+            Vector3 spawnPosition = GetRandomSpawnPosition();
+            Instantiate(randomEnemy, spawnPosition, Quaternion.identity);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
 
     Vector3 GetRandomSpawnPosition()
     {
