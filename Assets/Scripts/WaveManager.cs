@@ -21,11 +21,14 @@ public class WaveManager : MonoBehaviour
     public float maxSpawnDistance;
 
     private int currentWaveIndex;
-    public GameObject[] enemyPrefab;
+
+    [Header("Mixed Wave Enemy Prefabs")]
+    public GameObject[] enemyPrefabs;
+
 
     public TimerManager timerScript;
 
-    void Awake() 
+    void Awake()
     {
         if(timerScript == null)
         {
@@ -55,6 +58,11 @@ public class WaveManager : MonoBehaviour
             Debug.Log("Spawning mixed wave");
             StartCoroutine(SpawnMixedWave());
             currentWaveIndex++;
+        }
+
+        if(Mathf.FloorToInt(elapsedSeconds) == 180)
+        {
+            RemoveAllEnemies();
         }
 
     }
@@ -98,7 +106,7 @@ public class WaveManager : MonoBehaviour
 
         for(int i = 0; i < mixedEnemyCount; i++)
         {
-            GameObject randomEnemy = enemyPrefab[Random.Range(0, enemyPrefab.Length)];
+            GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
             Vector3 spawnPosition = GetRandomSpawnPosition();
             Instantiate(randomEnemy, spawnPosition, Quaternion.identity);
@@ -125,6 +133,16 @@ public class WaveManager : MonoBehaviour
 
         return playerPosition + spawnOffset;
         
+    }
+
+    void RemoveAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach(GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 
 
