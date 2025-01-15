@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     public Image hpFillImage;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI hpText;
+    public WeaponSelection weaponSelection;
 
 
     void Awake() 
@@ -22,6 +23,11 @@ public class PlayerManager : MonoBehaviour
         if(playerStats == null)
         {
             playerStats = FindObjectOfType<PlayerStats>();
+        }
+
+        if(weaponSelection == null)
+        {
+            weaponSelection = FindObjectOfType<WeaponSelection>();
         }
     }
 
@@ -90,7 +96,10 @@ public class PlayerManager : MonoBehaviour
         playerStats.playerLevel++;
         playerStats.playerXPToLevelUp += 20;
         levelText.text = playerStats.playerLevel.ToString();
-        upgradeManager.ShowUpgradeOptions();
+        if(playerStats.playerLevel == 2)
+            weaponSelection.ShowWeaponSelection();
+        else
+            upgradeManager.ShowUpgradeOptions();
         Debug.Log("Level Up! Current Level: " + playerStats.playerLevel);
     }
 

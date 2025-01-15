@@ -54,23 +54,4 @@ public class WeaponManager : MonoBehaviour
     {
         SetWeapon(rifle);
     }
-
-    private void Update() {
-
-        if(Time.timeScale == 0)
-            return;
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetWeapon(pistol);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetWeapon(shotgun);
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetWeapon(rifle);
-        }
-    }
 }
