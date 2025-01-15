@@ -51,10 +51,16 @@ public class WeaponSelection : MonoBehaviour
         if(weaponType == "Shotgun")
         {
             weaponManager.SetWeapon(weaponManager.shotgun);
+            playerStats.playerAttackDamage += shotgunAttackDamageBuff;
+            playerStats.playerMovementSpeed -= shotgunMovementSpeedDebuff;
+            playerStats.playerFireRate += shotgunAttackSpeedDebuff;
         }
         else if(weaponType == "Rifle")
         {
             weaponManager.SetWeapon(weaponManager.rifle);
+            playerStats.playerAttackDamage -= rifleAttackDamageDebuff;
+            playerStats.playerMovementSpeed += rifleMovementSpeedBuff;
+            playerStats.playerFireRate -= rifleAttackSpeedBuff;
         }
 
         weaponSelectionPanel.SetActive(false);

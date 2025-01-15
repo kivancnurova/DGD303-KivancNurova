@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460547086}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47a4286f798dd014d802de92c5d4d18c, type: 3}
   m_Name: 
@@ -1823,12 +1823,12 @@ MonoBehaviour:
   weaponSelectionPanel: {fileID: 495693191}
   shotgunButton: {fileID: 285082663}
   rifleButton: {fileID: 1323987322}
-  shotgunAttackDamageBuff: 0
-  shotgunAttackSpeedDebuff: 0
-  shotgunMovementSpeedDebuff: 0
-  rifleAttackSpeedBuff: 0
-  rifleMovementSpeedBuff: 0
-  rifleAttackDamageDebuff: 0
+  shotgunAttackDamageBuff: 300
+  shotgunAttackSpeedDebuff: 1
+  shotgunMovementSpeedDebuff: 0.6
+  rifleAttackSpeedBuff: 0.8
+  rifleMovementSpeedBuff: 1
+  rifleAttackDamageDebuff: 50
 --- !u!1 &478666114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,7 +4708,7 @@ Transform:
   m_GameObject: {fileID: 1205325864}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.042, y: 0.103, z: 0}
+  m_LocalPosition: {x: 0.042, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5061,9 +5061,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '+5 ATTACK SPEED
+  m_text: '+0.8 ATTACK SPEED
 
-    +2 MOVEMENT SPEED'
+    +1 MOVEMENT SPEED'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}
   m_sharedMaterial: {fileID: 4260037595826598504, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}
@@ -6342,6 +6342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1856352876}
+  crosshairImage: {fileID: 0}
 --- !u!114 &1856352878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6468,9 +6469,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '-5 ATTACK SPEED
+  m_text: '-1 ATTACK SPEED
 
-    -3 MOVEMENT SPEED'
+    -0.6 MOVEMENT SPEED'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}
   m_sharedMaterial: {fileID: 4260037595826598504, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}

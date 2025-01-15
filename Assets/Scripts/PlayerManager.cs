@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
         playerStats.playerLevel++;
         playerStats.playerXPToLevelUp += 20;
         levelText.text = playerStats.playerLevel.ToString();
-        if(playerStats.playerLevel == 2)
+        if(playerStats.playerLevel == 1)
             weaponSelection.ShowWeaponSelection();
         else
             upgradeManager.ShowUpgradeOptions();

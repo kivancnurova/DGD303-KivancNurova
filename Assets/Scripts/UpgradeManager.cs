@@ -99,7 +99,7 @@ public class UpgradeManager : MonoBehaviour
             new UpgradeOption
             {
                 name = "Attack Speed",
-                description = "Increases Player Attack Speed",
+                description = "Increases Player Attack Speed: " + playerFireRateUpgradeAmount,
                 icon = Resources.Load<Sprite>("Icons/AttackSpeedIcon"),
                 effect = () => playerStats.playerFireRate -= playerFireRateUpgradeAmount
             },
