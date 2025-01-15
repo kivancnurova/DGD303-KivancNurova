@@ -2652,12 +2652,12 @@ GameObject:
   - component: {fileID: 1755009324}
   - component: {fileID: 1755009323}
   m_Layer: 5
-  m_Name: REF_PLACEHOLDER_3
+  m_Name: ' SahilGandhiTXT'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1755009322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2697,7 +2697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: REF_PLACEHOLDER_3
+  m_text: "\rSahil Gandhi"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}
   m_sharedMaterial: {fileID: 4260037595826598504, guid: 7988ade57185bb0498144c1eccf59ffe, type: 2}

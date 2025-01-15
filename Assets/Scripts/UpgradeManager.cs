@@ -17,7 +17,6 @@ public class UpgradeManager : MonoBehaviour
     public float playerFireRateUpgradeAmount;
     public float playerBulletSpeedUpgradeAmount;
     public int playerXPToLevelUpUpgradeAmount;
- 
 
     [System.Serializable]
     public class UpgradeOption
@@ -30,16 +29,22 @@ public class UpgradeManager : MonoBehaviour
 
     [Header("Upgrade Options")]
     public List<UpgradeOption> allUpgrades;
-    public Button[] upgradeButtons;
     public GameObject upgradePanel;
 
-    void Awake() 
+    [Header("Upgrade Slots")]
+    public GameObject[] upgradeSlots; // Upgrade1, Upgrade2, Upgrade3 gibi GameObjectler
+    public TMP_Text[] upgradeNames; // UpgradeName1, UpgradeName2, UpgradeName3
+    public Image[] upgradeImages; // UpgradeImage1, UpgradeImage2, UpgradeImage3
+    public TMP_Text[] upgradeDescriptions; // UpgradeDescription1, UpgradeDescription2, UpgradeDescription3
+    public Button[] upgradeButtons; // UpgradeButton1, UpgradeButton2, UpgradeButton3
+
+    void Awake()
     {
-        if(playerStats == null)
+        if (playerStats == null)
         {
             playerStats = FindObjectOfType<PlayerStats>();
         }
-        if(playerManager == null)
+        if (playerManager == null)
         {
             playerManager = FindObjectOfType<PlayerManager>();
         }
@@ -54,13 +59,15 @@ public class UpgradeManager : MonoBehaviour
             new UpgradeOption
             {
                 name = "Attack Damage",
-                description = "Increases Player Attack Damage:" + playerAttackDamageUpgradeAmount,
+                description = "Increases Player Attack Damage: " + playerAttackDamageUpgradeAmount,
+                icon = Resources.Load<Sprite>("Icons/AttackDamageIcon"),
                 effect = () => playerStats.playerAttackDamage += playerAttackDamageUpgradeAmount
             },
             new UpgradeOption
             {
                 name = "Max Health",
-                description = "Increases Player Max Health:" + playerMaxHealthUpgradeAmount,
+                description = "Increases Player Max Health: " + playerMaxHealthUpgradeAmount + " and heals 15 health instantly",
+                icon = Resources.Load<Sprite>("Icons/MaxHealthIcon"),
                 effect = () => 
                 {
                 playerStats.playerMaxHealth += playerMaxHealthUpgradeAmount;
@@ -71,7 +78,8 @@ public class UpgradeManager : MonoBehaviour
             new UpgradeOption
             {
                 name = "Regeneration",
-                description = "Regenerate" + playerRegenerationUpgradeAmount + "Health Instantly",
+                description = "Regenerate " + playerRegenerationUpgradeAmount + " Health Instantly",
+                icon = Resources.Load<Sprite>("Icons/RegenerationIcon"),
                 effect = () =>
                 {
                     if(playerStats.playerCurrentHealth + playerRegenerationUpgradeAmount > playerStats.playerMaxHealth)
@@ -84,25 +92,29 @@ public class UpgradeManager : MonoBehaviour
             new UpgradeOption
             {
                 name = "Movement Speed",
-                description = "Increases Player Movement Speed:" + playerMovementSpeedUpgradeAmount,
+                description = "Increases Player Movement Speed: " + playerMovementSpeedUpgradeAmount,
+                icon = Resources.Load<Sprite>("Icons/MovementSpeedIcon"),
                 effect = () => playerStats.playerMovementSpeed += playerMovementSpeedUpgradeAmount
             },
             new UpgradeOption
             {
                 name = "Attack Speed",
                 description = "Increases Player Attack Speed",
+                icon = Resources.Load<Sprite>("Icons/AttackSpeedIcon"),
                 effect = () => playerStats.playerFireRate -= playerFireRateUpgradeAmount
             },
             new UpgradeOption
             {
                 name = "Bullet Speed",
-                description = "Increases player bullet speed",
+                description = "Increases player bullet speed: " + playerBulletSpeedUpgradeAmount,
+                icon = Resources.Load<Sprite>("Icons/BulletSpeedIcon"),
                 effect = () => playerStats.playerBulletSpeed += playerBulletSpeedUpgradeAmount
             },
             new UpgradeOption
             {
                 name = "Exp Ratio",
                 description = "Decreases the amount of XP needed to level up",
+                icon = Resources.Load<Sprite>("Icons/ExpRatioIcon"),
                 effect = () => 
                 {
                 playerStats.playerXPToLevelUp -= playerXPToLevelUpUpgradeAmount;
@@ -117,17 +129,19 @@ public class UpgradeManager : MonoBehaviour
         Time.timeScale = 0;
         upgradePanel.SetActive(true);
 
-        List<UpgradeOption> randomUpgrades = GetRandomUpgrades(3);
+        List<UpgradeOption> randomUpgrades = GetRandomUpgrades(upgradeSlots.Length);
 
-        for (int i = 0; i < upgradeButtons.Length; i++)
+        for (int i = 0; i < upgradeSlots.Length; i++)
         {
-            int index = i;
-            Button button = upgradeButtons[i];
             UpgradeOption upgrade = randomUpgrades[i];
 
-            button.GetComponentInChildren<TextMeshProUGUI>().text = upgrade.name;
-            button.GetComponent<Image>().sprite = upgrade.icon;
+            // Update UI elements for each slot
+            upgradeNames[i].text = upgrade.name;
+            upgradeImages[i].sprite = upgrade.icon;
+            upgradeDescriptions[i].text = upgrade.description;
 
+            // Set button behavior
+            Button button = upgradeButtons[i];
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>
             {
@@ -151,12 +165,11 @@ public class UpgradeManager : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            if(availableUpgrades.Count == 0) break;
+            if (availableUpgrades.Count == 0) break;
 
             int randomIndex = Random.Range(0, availableUpgrades.Count);
             randomUpgrades.Add(availableUpgrades[randomIndex]);
             availableUpgrades.RemoveAt(randomIndex);
-
         }
 
         return randomUpgrades;
