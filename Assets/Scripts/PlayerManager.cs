@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public Image xpFillImage;
     public Image hpFillImage;
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI hpText;
 
 
     void Awake() 
@@ -29,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         upgradeManager = FindObjectOfType<UpgradeManager>();
         playerStats.playerCurrentHealth = playerStats.playerMaxHealth;
         levelText.text = playerStats.playerLevel.ToString();
+        hpText.text = playerStats.playerCurrentHealth + "/" + playerStats.playerMaxHealth;
         UpdateHPBar();
         UpdateXPBar();
     }
@@ -55,6 +58,7 @@ public class PlayerManager : MonoBehaviour
     {
         float fillAmount = (float)playerStats.playerCurrentHealth / playerStats.playerMaxHealth;
         hpFillImage.fillAmount = fillAmount;
+        hpText.text = playerStats.playerCurrentHealth + "/" + playerStats.playerMaxHealth;
     }
 
 
@@ -63,6 +67,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerStats.playerCurrentHealth -= damage;
         UpdateHPBar();
+        hpText.text = playerStats.playerCurrentHealth + "/" + playerStats.playerMaxHealth;
         if(playerStats.playerCurrentHealth <= 0)
         {
             Die();
@@ -91,6 +96,6 @@ public class PlayerManager : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player died!");
+        SceneManager.LoadScene("MainMenu");;
     }
 }
