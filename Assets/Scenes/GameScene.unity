@@ -2074,6 +2074,8 @@ MonoBehaviour:
   - {fileID: 7857634568873399134, guid: 47a437218754acf4c9c4eacc96f0d490, type: 3}
   - {fileID: 434580870581963127, guid: 44100e46541463347b6ae13ecf9a31e7, type: 3}
   - {fileID: 9222455454230132804, guid: a4ec7f55f527dd941a23de2b8d6da676, type: 3}
+  bossPrefab: {fileID: 8169287356472313562, guid: d063cdb6ca4e0314daddcdd2cb33a10f, type: 3}
+  isBossSpawned: 0
   timerScript: {fileID: 0}
 --- !u!114 &460547092
 MonoBehaviour:

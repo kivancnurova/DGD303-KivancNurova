@@ -25,6 +25,9 @@ public class WaveManager : MonoBehaviour
     [Header("Mixed Wave Enemy Prefabs")]
     public GameObject[] enemyPrefabs;
 
+    public GameObject bossPrefab;
+    public bool isBossSpawned;
+
 
     public TimerManager timerScript;
 
@@ -143,6 +146,18 @@ public class WaveManager : MonoBehaviour
         {
             Destroy(enemy);
         }
+
+        if(!isBossSpawned)
+        {
+            SpawnBoss();
+        }
+    }
+
+    void SpawnBoss()
+    {
+        Vector3 bossSpawnPosition = GetRandomSpawnPosition();
+        Instantiate(bossPrefab, bossSpawnPosition, Quaternion.identity);
+        isBossSpawned = true;
     }
 
 
