@@ -105,7 +105,7 @@ public class WaveManager : MonoBehaviour
     IEnumerator SpawnMixedWave()
     {
         Debug.Log("Spawning mixed wave");
-        int mixedEnemyCount = 30;
+        int mixedEnemyCount = Random.Range(12, 15);
 
         for(int i = 0; i < mixedEnemyCount; i++)
         {
