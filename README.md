@@ -1,6 +1,7 @@
 CONTROLS
 ----------------------------------
 Move: WASD
+
 Attack: Auto
 Stats Screen: B
 Pause: ESC
