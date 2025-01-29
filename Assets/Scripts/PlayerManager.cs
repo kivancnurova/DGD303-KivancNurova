@@ -105,6 +105,6 @@ public class PlayerManager : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene("MainMenu");;
+        SceneManager.LoadScene("MainMenu");
     }
 }
