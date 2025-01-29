@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletPool : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public int poolSize = 20;
+    public int poolSize;
 
     private Queue<GameObject> bulletPool = new Queue<GameObject>();
 
@@ -13,7 +13,7 @@ public class BulletPool : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject bullet = Instantiate(bulletPrefab);
+            GameObject bullet = Instantiate(bulletPrefab, transform);
             bullet.SetActive(false);
             bulletPool.Enqueue(bullet);
         }
@@ -37,6 +37,7 @@ public class BulletPool : MonoBehaviour
     public void ReturnBullet(GameObject bullet)
     {
         bullet.SetActive(false);
+        bullet.transform.SetParent(transform);
         bulletPool.Enqueue(bullet);
     }
 }
